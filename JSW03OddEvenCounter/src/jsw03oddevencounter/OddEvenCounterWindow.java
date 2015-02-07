@@ -5,11 +5,15 @@
  */
 package jsw03oddevencounter;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author András Gazdag <gazdag.andras@gmail.com>
  */
 public class OddEvenCounterWindow extends javax.swing.JFrame {
+
+    private int odd = 0, even = 0;
 
     /**
      * Creates new form OddEvenCounterWindow
@@ -41,6 +45,11 @@ public class OddEvenCounterWindow extends javax.swing.JFrame {
         jLabel1.setText("Number:");
 
         btnCount.setText("Count");
+        btnCount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCountActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Results:"));
 
@@ -49,8 +58,10 @@ public class OddEvenCounterWindow extends javax.swing.JFrame {
         jLabel3.setText("Even:");
 
         tfOdd.setEditable(false);
+        tfOdd.setText("0");
 
         tfEven.setEditable(false);
+        tfEven.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,6 +125,22 @@ public class OddEvenCounterWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCountActionPerformed
+        try {
+        int number = Integer.parseInt(tfNumber.getText());
+        if (number % 2 == 0) {
+            even++;
+            tfEven.setText(Integer.toString(even));
+        } else {
+            odd++;
+            tfOdd.setText(Integer.toString(odd));
+        }
+        tfNumber.setText("");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "This is not an integer number!", "Wrong number!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCountActionPerformed
 
     /**
      * @param args the command line arguments
