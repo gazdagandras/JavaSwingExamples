@@ -122,6 +122,11 @@ public class ButtonFormatterWindow extends javax.swing.JFrame {
         });
 
         btnUp.setText("Up");
+        btnUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpActionPerformed(evt);
+            }
+        });
 
         btnLeft.setText("Left");
 
@@ -322,6 +327,10 @@ public class ButtonFormatterWindow extends javax.swing.JFrame {
     private void cbTextColorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbTextColorPropertyChange
         
     }//GEN-LAST:event_cbTextColorPropertyChange
+
+    private void btnUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpActionPerformed
+        
+    }//GEN-LAST:event_btnUpActionPerformed
 
     /**
      * @param args the command line arguments
