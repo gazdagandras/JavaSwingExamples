@@ -5,6 +5,9 @@
  */
 package jsw04buttonformatter;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author András Gazdag <gazdag.andras@gmail.com>
@@ -82,8 +85,23 @@ public class ButtonFormatterWindow extends javax.swing.JFrame {
         });
 
         btnChangeText.setText("Change text");
+        btnChangeText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeTextActionPerformed(evt);
+            }
+        });
 
         cbTextColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "black", "red", "blue", "green" }));
+        cbTextColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTextColorActionPerformed(evt);
+            }
+        });
+        cbTextColor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbTextColorPropertyChange(evt);
+            }
+        });
 
         jLabel2.setText("Text color:");
 
@@ -121,6 +139,11 @@ public class ButtonFormatterWindow extends javax.swing.JFrame {
         jLabel4.setText("Size:");
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -244,12 +267,61 @@ public class ButtonFormatterWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_tfTextActionPerformed
 
     private void btnChangeBgColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeBgColorActionPerformed
-        // TODO add your handling code here:
+        int bgColorIndex = lstBgColor.getSelectedIndex();
+        switch (bgColorIndex) {
+            case 0:
+                btnButton.setBackground(Color.BLACK);
+                break;
+            case 1:
+                btnButton.setBackground(Color.RED);
+                break;                
+            case 2:
+                btnButton.setBackground(Color.BLUE);
+                break;
+            case 3:
+                btnButton.setBackground(Color.GREEN);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "PLease choose a color from the list!", "Invalid color!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnChangeBgColorActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnChangeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTextActionPerformed
+        btnButton.setText(tfText.getText());
+        tfText.setText("");
+    }//GEN-LAST:event_btnChangeTextActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void cbTextColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTextColorActionPerformed
+        int fgColorIndex = cbTextColor.getSelectedIndex();
+        switch (fgColorIndex) {
+            case 0:
+                btnButton.setForeground(Color.BLACK);
+                break;
+            case 1:
+                btnButton.setForeground(Color.RED);
+                break;                
+            case 2:
+                btnButton.setForeground(Color.BLUE);
+                break;
+            case 3:
+                btnButton.setForeground(Color.GREEN);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "PLease choose a color from the list!", "Invalid color!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_cbTextColorActionPerformed
+
+    private void cbTextColorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbTextColorPropertyChange
+        
+    }//GEN-LAST:event_cbTextColorPropertyChange
 
     /**
      * @param args the command line arguments
